@@ -1,0 +1,49 @@
+/* Global Reset & Body Setup */
+body {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Typography & Brand */
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Layout: Pushes footer to the bottom */
+.main-content {
+    flex: 1;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* Hero Section (Index Page) */
+.hero-card {
+    background: white;
+    border: 1px solid #e3e6f0;
+    border-radius: 1rem;
+    /* Rounded corners */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    /* Soft shadow */
+}
+
+/* Footer Styling */
+.app-footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 1.5rem 0;
+    margin-top: auto;
+}
+
+.app-footer a {
+    color: #adb5bd;
+    text-decoration: none;
+}
+
+.app-footer a:hover {
+    color: #fff;
+}
