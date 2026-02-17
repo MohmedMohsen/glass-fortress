@@ -1,105 +1,118 @@
-
----
+<div align="center">
 
 # 🏰 The Glass Fortress
 
+### A Vulnerable Web Application Lab for Offensive Security
 
-> **The Glass Fortress** is a very beginner-friendly, intentionally vulnerable web application designed as a safe lab to practice offensive security and penetration testing.
+![Language](https://img.shields.io/badge/Language-PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![Database](https://img.shields.io/badge/Database-MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Intentionally%20Vulnerable-red?style=for-the-badge&logo=security)
 
+<br>
+
+
+</div>
+
+> [!important]
+> **The Glass Fortress** is a beginner-friendly, intentionally vulnerable web application.  
+> It serves as a safe "sandbox" environment to practice offensive security, penetration testing, and secure coding.
+
+---
 
 > [!CAUTION]
+> **DANGER: DO NOT DEPLOY PUBLICLY**
 > 
-> **WARNING:** Deployment on public-facing servers is strictly prohibited. This environment contains intentional Remote Code Execution (RCE) flaws. Use only within isolated environments (e.g., XAMPP, Docker, or VMs).
-
+> This application contains intentional **Remote Code Execution (RCE)** flaws and critical security vulnerabilities. 
+> * **Do NOT** upload this to a live server (Heroku, AWS, Shared Hosting).
+> * **ONLY** use this in an isolated environment (e.g., Localhost XAMPP, Docker, or a Virtual Machine).
 
 ---
 
 ## 🛠️ Installation & Setup
 
 ### Prerequisites
+* **XAMPP** (or any LAMP stack)
+* Basic understanding of SQLi, XSS, IDOR, and Web Requests.
 
-- *XAMPP*
-- *The very basics of SQLi, XSS, IDOR etc.*
-### Deployment Steps
+### 🚀 Deployment Steps
 
- **Clone the Source:**
-    
-1. **Database :**
-	
-	- open the **XAMPP Control Panel** and *start* Apache and MySQL
-		
-		
-    - Access **XAMPP phpMyAdmin**.
-        
-        
-    - Source the `glass_db.sql` file provided in the repository.
-		
-		
-	- Import it 
-	
-2. **Environment Config:** 
-	    We using the Default settings 
-    - _Default (XAMPP):_ `root` / `no-password`. 
-	    (no need to do anything )
-3. **Initialize:**
-    
-    - Access via: `http://localhost/projects/glass-fortress`.
-        
+**1. Clone the Repository**
+Navigate to your `htdocs` folder.
+Click the green **"Code"** button above to get the URL, or run:
+```bash
+cd C:\xampp\htdocs
+# Replace <username> with the current owner's username (ME)
+git clone [https://github.com/](https://github.com/)<username>/glass-fortress.git
+```
 
----
+**2. Database Setup**
+* Open **XAMPP Control Panel** and start **Apache** and **MySQL**.
+* Navigate to [http://localhost/phpmyadmin](http://localhost/phpmyadmin).
+* Click **Import** and select the `glass_db.sql` file from the cloned repository.
+	(it will create everything for you glass_db , tables ect. )
 
-## 🎯 **Lab Goals** 🕵️‍♂️
+**3. Configuration**
+* The project uses default XAMPP credentials:
+    * **User:** `root`
+    * **Password:** *(empty)*
 
-1. **Login without a Password**
-    
-    - **Goal:** Log in as the `admin` without knowing the real password (without brute force).
-	    (Try to guess the columns number and get the data )
-	    
-1. **Become the Admin**
-    
-    - **Goal:** Log in as a normal user, then trick the system into making you an Admin.
-        
-    - **Hint:** cookies 🍪 .
-    
-2. **Read Secret Notes**
-    
-    - **Goal:** Find and read notes that belong to other users.
-    
-3. **Delete Other People's Files**
-    
-    - **Goal:** Delete a file that you did not upload.
-    
-4. **Run System Commands (The Shell)**
-    
-    - **Goal:** Upload a special PHP file that lets you control the server or get info.
-    
-5. **Hacked Profile Page**
-    
-    - **Goal:** Make a pop-up window appear whenever someone visits your profile.
-        
-    - **Hint:** Write a script in your "Bio" box, or check hacker's profile  .
+**4. Enter the Fortress**
+* Open your browser and visit:
+    * `http://localhost/projects/glass-fortress`
+
 
 ---
 
- 
-## 🎯 Vulnerability Roadmap (**Spoilers**)
+## 🚩 Mission Checklist (Lab Goals)
 
-This project simulates a legacy environment with the following intentional security gaps:
+Can you shatter the fortress? Try to complete these objectives in order.
 
-| **Vulnerability **       | **Vector**             | **Failure Logic (Technique)**                                                            |     |
-| ------------------------ | ---------------------- | ---------------------------------------------------------------------------------------- | --- |
-| **SQL Injection (SQLi)** | `login.php`            | **Auth Bypass:** Manipulating boolean logic to force true conditions (e.g., `' OR 1=1`). |     |
-| **Stored XSS**           | `profile.php`          | **Persistence:** Injecting executable JS payloads into user bio/notes fields.            |     |
-| **Unrestricted Upload**  | `files.php`            | **RCE Risk:** Uploading PHP files (Web Shells).                                          |     |
-| **IDOR**                 | `note.php` `notes.php` | **Data Leak and Deletion :** tampering with the `id` parameter in URL.                   |     |
-| **Privilege Escalation** | `admin/dashboard.php`  | **Broken Auth:** Trusting client-side `cookies` for role verification .                  |     |
-| **Arbitrary Deletion**   | `files.php`            | **Destructive:** Manipulating file paths in delete requests to remove system files.      |     |
+- [ ] **Login without a Password**
+  - **Goal:** Log in as the admin without knowing the real password (without brute force)
+  - *(Try to guess the columns number and get the data )*
+
+- [ ] **Become the Admin**
+  - **Goal:** Log in as a normal user, then trick the system into making you an Admin.
+  - **Hint:** cookies 🍪 .
+
+- [ ] **Read Secret Notes**
+  - **Goal:** Find and read notes that belong to other users.
+
+- [ ] **Delete Other People's Files**
+  - **Goal:** Delete a file that you did not upload.
+
+- [ ] **Run System Commands (The Shell)**
+  - **Goal:** Upload a special PHP file that lets you control the server or get server info.
+
+- [ ] **Hacked Profile Page**
+  - **Goal:** Make a pop-up window appear whenever someone visits your profile.
+  - **Hint:** Write a script in your "Bio" box, or check hacker's profile
+---
+
+## 🗺️ Vulnerability Roadmap (Spoilers)
+
+**Note:** Try to find the vulnerabilities yourself first!
+
+<details>
+<summary> 🚨 <strong>Click to Reveal Stronger hints (Spoilers)</strong> 🚨 </summary>
+
+<br>
+
+| **Vulnerability**       | **Vector**             | **Failure Logic (Technique)**                                                            |
+| ------------------------ | ---------------------- | ---------------------------------------------------------------------------------------- |
+| **SQL Injection (SQLi)** | `login.php`            | **Auth Bypass:** Manipulating boolean logic to force true conditions . |
+| **Stored XSS**           | `profile.php`          | **Persistence:** Injecting executable JS payloads into user bio/notes fields.            |
+| **Unrestricted Upload**  | `files.php`            | **RCE Risk:** Uploading PHP files (Web Shells).                                          |
+| **IDOR**                 | `note.php` `notes.php` | **Data Leak and Deletion :** tampering with the `id` parameter in URL.                   |
+| **Privilege Escalation** | `admin/dashboard.php`  | **Broken Auth:** Trusting client-side `cookies` for role verification .                  |
+| **Arbitrary Deletion**   | `files.php`            | **Destructive:** Manipulating file paths in delete requests to remove system files.      |
+</details>
+
 
 ---
 
 ## ⚖️ Legal Disclaimer
 
-This repository is for **Educational and Ethical Research purposes only**. The user assumes all responsibility for any actions performed using this material. Unauthorized access to computer systems is illegal.
-
----
-
+> **Educational Purposes Only**
+>
+> This repository is strictly for **ethical research and learning**. The user assumes all responsibility for any actions performed using this material. Unauthorized attacks against systems you do not own is illegal.
