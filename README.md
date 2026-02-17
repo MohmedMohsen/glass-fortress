@@ -22,13 +22,7 @@
 - *The very basics of SQLi, XSS, IDOR etc.*
 ### Deployment Steps
 
-1. **Clone the Source:**
-    
-    Bash
-    
-    ```
-    git clone https://github.com/YourUsername/glass-fortress.git
-    ```
+ **Clone the Source:**
     
 1. **Database :**
 	
